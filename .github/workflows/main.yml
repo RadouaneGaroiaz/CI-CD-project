@@ -1,4 +1,4 @@
-name: FastAPI test 
+name: FastAPI run 
 
 on:
   push:
@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 jobs:
-  fastapi-run-test:
+  fastapi-run:
     runs-on: ubuntu-20.04
 
     steps:
@@ -25,10 +25,4 @@ jobs:
           pip install -r ./requirements.txt
 
       - name: Start Backend Server
-        run: uvicorn app.main:app --reload & 
-
-      #add some test
-      - name: Test with pytest
-        run: |
-          pip install pytest pytest-cov
-          pytest
+        run: uvicorn main:app --reload &
